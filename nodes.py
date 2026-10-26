@@ -198,30 +198,38 @@ class Krea2StructuredPrompt:
         return {
             "required": {
                 "scene": ("STRING", {
-                    "multiline": True, "default": "",
+                    "multiline": True, "dynamicPrompts": False, "default": "",
+                    "placeholder": "Describe the environment and background...",
                     "tooltip": "Environment / background. Woven into paragraph 1 as the scene backdrop.",
                 }),
                 "composition": ("STRING", {
-                    "multiline": True, "default": "",
+                    "multiline": True, "dynamicPrompts": False, "default": "",
+                    "placeholder": "e.g. Medium shot, eye-level, shallow depth of field",
                     "tooltip": "Shot type, angle, framing, depth of field. Paragraph 2.",
                 }),
                 "lighting": ("STRING", {
-                    "multiline": True, "default": "",
+                    "multiline": True, "dynamicPrompts": False, "default": "",
+                    "placeholder": "e.g. Soft diffused window light, gentle shadows",
                     "tooltip": "Light quality, direction, colour / mood. Paragraph 2.",
                 }),
                 "style": ("STRING", {
-                    "multiline": True, "default": "",
+                    "multiline": True, "dynamicPrompts": False, "default": "",
+                    "placeholder": "e.g. 35mm photograph, digital art...",
                     "tooltip": "Medium and overall aesthetic. Paragraph 2.",
                 }),
                 # Hidden data channel for the dynamic character list. The JS
                 # frontend draws the real UI (add/remove/reorder blocks, preset
                 # pickers) and keeps this JSON array in sync. Empty default is
                 # a JSON empty array so a bare node with no characters is valid.
-                "characters_data": ("STRING", {"default": "[]", "multiline": False}),
+                "characters_data": ("STRING", {
+                    "default": "[]", "multiline": True, "dynamicPrompts": False,
+                    "placeholder": "Character data is managed by the frontend (JSON array).",
+                }),
             },
             "optional": {
                 "technical_details": ("STRING", {
-                    "multiline": True, "default": "",
+                    "multiline": True, "dynamicPrompts": False, "default": "",
+                    "placeholder": "e.g. Camera / lens language, grain...",
                     "tooltip": "Camera / lens language, grain, etc. Optional. Paragraph 2.",
                 }),
             },

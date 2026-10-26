@@ -515,8 +515,9 @@ app.registerExtension({
 
       function fitNode() {
         const need = node.computeSize();
-        if (need[1] > node.size[1]) {
-          node.setSize([node.size[0], need[1]]);
+        const width = Math.max(node.size?.[0] || 360, 360);
+        if (Math.abs(need[1] - node.size[1]) > 1 || width !== node.size[0]) {
+          node.setSize([width, need[1]]);
         }
         node.setDirtyCanvas(true, true);
       }
